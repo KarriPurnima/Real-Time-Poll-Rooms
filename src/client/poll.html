@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Poll - Real-Time Poll Rooms</title>
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <h1>📊 Real-Time Poll</h1>
+      <p id="header-subtitle">Loading poll...</p>
+    </header>
+
+    <!-- Loading State -->
+    <div id="loading-card" class="card">
+      <div class="loading-text">
+        <div class="spinner"></div>
+        <span>Loading poll...</span>
+      </div>
+    </div>
+
+    <!-- Error State -->
+    <div id="error-card" class="card hidden">
+      <div style="text-align: center; padding: 2rem;">
+        <div style="font-size: 4rem; margin-bottom: 1rem;">😕</div>
+        <h2 style="margin-bottom: 1rem; color: var(--text-primary);">Poll Not Found</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+          This poll doesn't exist or may have been deleted.
+        </p>
+        <a href="/create" class="btn btn-primary">
+          Create Your Own Poll
+        </a>
+      </div>
+    </div>
+
+    <!-- Poll Card -->
+    <div id="poll-card" class="card hidden">
+      <!-- Status Badge -->
+      <div class="status-badge live">
+        <span>Live Results</span>
+      </div>
+
+      <!-- Alert Messages -->
+      <div id="alert-container"></div>
+
+      <!-- Poll Question -->
+      <div class="card-header">
+        <h2 id="poll-question">Poll Question</h2>
+      </div>
+
+      <!-- Voting Section (shown when user hasn't voted) -->
+      <div id="voting-section">
+        <form id="vote-form">
+          <div class="poll-options" id="poll-options">
+            <!-- Options will be rendered here -->
+          </div>
+
+          <button type="submit" id="vote-btn" class="btn btn-primary btn-block btn-lg">
+            <span id="vote-text">Submit Vote</span>
+            <span id="vote-spinner" class="spinner hidden"></span>
+          </button>
+        </form>
+      </div>
+
+      <!-- Results Section -->
+      <div id="results-section">
+        <h3 style="margin-bottom: 1.5rem; color: var(--text-primary); font-size: 1.5rem;">
+          📊 Results
+        </h3>
+        <div class="results-container" id="results-container">
+          <!-- Results will be rendered here -->
+        </div>
+
+        <div class="total-votes">
+          Total Votes: <strong id="total-votes">0</strong>
+        </div>
+      </div>
+
+      <!-- Share Section -->
+      <div class="share-section">
+        <h3>Share This Poll</h3>
+        <div class="share-link-container">
+          <input 
+            type="text" 
+            id="share-link" 
+            class="share-link" 
+            readonly
+          >
+          <button id="copy-btn" class="btn-copy">
+            Copy Link
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back Link -->
+    <div style="text-align: center; margin-top: 2rem;">
+      <a href="/" style="color: rgba(255, 255, 255, 0.9); text-decoration: none; font-weight: 500;">
+        ← Back to Home
+      </a>
+    </div>
+  </div>
+
+  <!-- Socket.io Client -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/scripts/socket-client.js"></script>
+  <script src="/scripts/poll.js"></script>
+</body>
+</html>

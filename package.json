@@ -1,0 +1,35 @@
+{
+  "name": "real-time-poll-rooms",
+  "version": "1.0.0",
+  "description": "Real-time polling application with shareable links and live results",
+  "main": "src/server/index.js",
+  "scripts": {
+    "start": "node src/server/index.js",
+    "dev": "nodemon src/server/index.js",
+    "init-db": "node src/server/database.js"
+  },
+  "keywords": [
+    "polling",
+    "real-time",
+    "websocket",
+    "socket.io"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.6.1",
+    "better-sqlite3": "^9.2.2",
+    "express-rate-limit": "^7.1.5",
+    "helmet": "^7.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "nanoid": "^3.3.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

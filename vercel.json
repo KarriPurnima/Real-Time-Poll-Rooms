@@ -1,0 +1,42 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "src/server/index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/socket.io/(.*)",
+      "dest": "src/server/index.js"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "src/server/index.js"
+    },
+    {
+      "src": "/styles/(.*)",
+      "dest": "src/client/styles/$1"
+    },
+    {
+      "src": "/scripts/(.*)",
+      "dest": "src/client/scripts/$1"
+    },
+    {
+      "src": "/create",
+      "dest": "src/client/create.html"
+    },
+    {
+      "src": "/poll/(.*)",
+      "dest": "src/client/poll.html"
+    },
+    {
+      "src": "/",
+      "dest": "src/client/index.html"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
